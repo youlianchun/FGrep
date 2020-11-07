@@ -28,12 +28,18 @@ class FGrep {
         queue.maxConcurrentOperationCount = concurrentCount > 0 ? concurrentCount : contains.count
         var idxbegin = 0
         var idxend = 0
+        let lock = NSLock()
         for (n, cs) in contains {
             queue.addOperation {
+                lock.lock()
                 idxbegin += 1
+                lock.unlock()
                 print("===\(contains.count):\(idxbegin)===>> \(n)")
-                ret[n] = FGrep(grepPath:grepPath).grep(contains: cs, atPath: atPath);
+                let r = FGrep(grepPath:grepPath).grep(contains: cs, atPath: atPath);
+                lock.lock()
+                ret[n] = r
                 idxend += 1
+                lock.unlock()
                 print("<<===\(contains.count):\(idxend)=== \(n)")
             }
         }
