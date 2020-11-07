@@ -33,14 +33,14 @@ class FGrep {
             queue.addOperation {
                 lock.lock()
                 idxbegin += 1
-                lock.unlock()
                 print("===\(contains.count):\(idxbegin)===>> \(n)")
+                lock.unlock()
                 let r = FGrep(grepPath:grepPath).grep(contains: cs, atPath: atPath);
                 lock.lock()
                 ret[n] = r
                 idxend += 1
-                lock.unlock()
                 print("<<===\(contains.count):\(idxend)=== \(n)")
+                lock.unlock()
             }
         }
         queue.waitUntilAllOperationsAreFinished()
