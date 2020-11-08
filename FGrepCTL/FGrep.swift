@@ -32,20 +32,27 @@ class FGrep {
         for (n, cs) in contains {
             queue.addOperation {
                 lock.lock()
+                Loger.log("===\(contains.count):\(idxbegin)===>> \(n)")
                 idxbegin += 1
-                print("===\(contains.count):\(idxbegin)===>> \(n)")
                 lock.unlock()
                 let r = FGrep(grepPath:grepPath).grep(contains: cs, atPath: atPath);
                 lock.lock()
                 ret[n] = r
+                Loger.log("<<===\(idxend):\(contains.count)=== \(n)")
                 idxend += 1
-                print("<<===\(contains.count):\(idxend)=== \(n)")
                 lock.unlock()
             }
         }
+        cyclelog([".", "..", "...", ""], 0.5) { (stop, needLog) in
+            lock.lock()
+            stop = idxend >= contains.count
+            needLog = idxbegin >= contains.count
+            lock.unlock()
+        }
+        
         queue.waitUntilAllOperationsAreFinished()
         let usedTime = Date().timeIntervalSince(beginTime)
-        print("used time: \(usedTime)s")
+        Loger.log("used time: \(usedTime)s")
         return ret
     }
     
@@ -53,14 +60,18 @@ class FGrep {
         var ret = [String:[String]?]()
         let beginTime = Date()
         var idx = 0
+        cyclelog([".", "..", "...", ""], 0.5) { (stop, needLog) in
+            stop = ret.count == contains.count
+            needLog = idx > 1
+        }
         for (n, cs) in contains {
             idx += 1
-            print("===\(contains.count):\(idx)===>> \(n)")
+            Loger.log("===\(contains.count):\(idx)===>> \(n)")
             ret[n] = grep(contains: cs, atPath: atPath);
-            print("")
+            Loger.log("")
         }
         let usedTime = Date().timeIntervalSince(beginTime)
-        print("used time: \(usedTime)s")
+        Loger.log("used time: \(usedTime)s")
         return ret
     }
     

@@ -7,10 +7,12 @@
 
 import Foundation
 
-print("Hello, FGrep!")
+print("\nHello, FGrepCTL!\n")
 
 if CommandLine.argc == 1 {
-    print("FGrep /xxx/xxx")
+    let path = CommandLine.arguments[0]
+    let name = (path as NSString).lastPathComponent
+    print("\(name) /xxx/xxx")
 }
 else {
     let path = CommandLine.arguments[1]

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A9328E2925563BD50064B145 /* Authority.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9328E2825563BD50064B145 /* Authority.swift */; };
+		A958817F2556E09000985F8D /* Loger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958817E2556E09000985F8D /* Loger.swift */; };
 		A998362325554B3C00F2266E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A998362225554B3C00F2266E /* main.swift */; };
 		A998362C25554B5800F2266E /* FGrep.swift in Sources */ = {isa = PBXBuildFile; fileRef = A998362A25554B5800F2266E /* FGrep.swift */; };
 		A998362D25554B5800F2266E /* Execution.swift in Sources */ = {isa = PBXBuildFile; fileRef = A998362B25554B5800F2266E /* Execution.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		A9328E2825563BD50064B145 /* Authority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authority.swift; sourceTree = "<group>"; };
+		A958817E2556E09000985F8D /* Loger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loger.swift; sourceTree = "<group>"; };
 		A998361F25554B3C00F2266E /* FGrepCTL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FGrepCTL; sourceTree = BUILT_PRODUCTS_DIR; };
 		A998362225554B3C00F2266E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A998362A25554B5800F2266E /* FGrep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGrep.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				A998362B25554B5800F2266E /* Execution.swift */,
 				A998362A25554B5800F2266E /* FGrep.swift */,
 				A9328E2825563BD50064B145 /* Authority.swift */,
+				A958817E2556E09000985F8D /* Loger.swift */,
 			);
 			path = FGrepCTL;
 			sourceTree = "<group>";
@@ -130,6 +133,7 @@
 			files = (
 				A998362D25554B5800F2266E /* Execution.swift in Sources */,
 				A998362325554B3C00F2266E /* main.swift in Sources */,
+				A958817F2556E09000985F8D /* Loger.swift in Sources */,
 				A998362C25554B5800F2266E /* FGrep.swift in Sources */,
 				A9328E2925563BD50064B145 /* Authority.swift in Sources */,
 			);
