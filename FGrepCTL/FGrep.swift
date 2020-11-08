@@ -32,14 +32,14 @@ class FGrep {
         for (n, cs) in contains {
             queue.addOperation {
                 lock.lock()
-                Loger.log("===\(contains.count):\(idxbegin)===>> \(n)")
                 idxbegin += 1
+                Loger.log("===\(contains.count):\(idxbegin)===>> \(n)")
                 lock.unlock()
                 let r = FGrep(grepPath:grepPath).grep(contains: cs, atPath: atPath);
                 lock.lock()
                 ret[n] = r
-                Loger.log("<<===\(idxend):\(contains.count)=== \(n)")
                 idxend += 1
+                Loger.log("<<===\(idxend):\(contains.count)=== \(n)")
                 lock.unlock()
             }
         }
