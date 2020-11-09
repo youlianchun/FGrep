@@ -7,11 +7,12 @@
 
 import Foundation
 
-print("\nHello, FGrepCTL!\n")
+let path = CommandLine.arguments[0]
+let name = (path as NSString).lastPathComponent
+
+print("\nHello, \(name)!\n")
 
 if CommandLine.argc == 1 {
-    let path = CommandLine.arguments[0]
-    let name = (path as NSString).lastPathComponent
     print("\(name) /xxx/xxx")
 }
 else {
@@ -22,9 +23,8 @@ else {
 
 func authority(path: String) {
     let ret =  Authority(grepOption: .all).grep(atPath: path);
-    let oPath = (path as NSString).deletingLastPathComponent
-    print("output path: \(oPath)")
-    ret.originRet.write(toFile: "\(path)_authority_origin.plist", atomically: true)
-    ret.authRet.write(toFile: "\(path)_authority_auth.plist", atomically: true)
-    ret.fileRet.write(toFile: "\(path)_authority_file.plist", atomically: true)
+    print("output path: \(path)_\(name)_xxx.plist")
+    ret.originRet.write(toFile: "\(path)_\(name)_origin.plist", atomically: true)
+    ret.authRet.write(toFile: "\(path)_\(name)_auth.plist", atomically: true)
+    ret.fileRet.write(toFile: "\(path)_\(name)_file.plist", atomically: true)
 }
